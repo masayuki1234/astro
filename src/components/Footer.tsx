@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 export const Footer = () => {
   const Today = new Date();
-  const [ranking, setRanking] = useState([]);
+  const [ranking, setRanking] = useState<string[]>([]);
 
   const items = [
     "牡羊座",
@@ -26,10 +26,10 @@ export const Footer = () => {
     Today.getDate() +
     1;
 
-  const getColorCodeSite = (name) => {
+  const getColorCodeSite = (name:string) => {
     const charCodeSum = name
       .split("")
-      .reduce((acc, char) => acc + char.charCodeAt(0), 0);
+      .reduce((acc:number, char:string) => acc + char.charCodeAt(0), 0);
     const ColorSeed = dateNum + charCodeSum;
     return (
       Math.floor(((Math.sin(ColorSeed) + 1) / 2) * (1100 - 1000 + 1)) + 1000

@@ -9,7 +9,7 @@ export const Confirm = () => {
   const navigate = useNavigate(); // useNavigateフックを使用
 
   //location.stateからデータを取得
-  const { formData } = useContext(FormContext);
+  const { formData } = useContext(FormContext)!;
   const handleSubmit = () => {
     navigate("/complete", {
       state: {
@@ -30,7 +30,7 @@ export const Confirm = () => {
     astrology: "西洋占星術",
     shichusuimei: "四柱推命",
   };
-  const displayMenu = menuMap[formData.menu];
+  const displayMenu = menuMap[formData.menu as keyof typeof menuMap];
   return (
     <div className="con-container">
       <h1>フォーム内容確認</h1>

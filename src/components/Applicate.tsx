@@ -4,12 +4,12 @@ import { FormContext } from "./FormContext";
 
 export const Form = () => {
   //Contextから既存でーたを読み込み、それを初期値として設定
-  const { formData, setFormData } = useContext(FormContext);
+  const { formData, setFormData } = useContext(FormContext)!;
 
   //navigateフック
   const navigate = useNavigate();
   //入力値が変更されたときにStateを更新するハンドラ
-  const handleChange = (e) => {
+  const handleChange = (e: React.FormEvent<HTMLFormElement>) => {
     const { name, value } = e.target;
     setFormData((PrevData) => ({
       ...PrevData,
@@ -17,7 +17,7 @@ export const Form = () => {
     }));
   };
   //フォームがそうしんされたときのハンドラ
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); //ページの再読み込みを防ぐ
     //送信処理を記述
     //confirmページに移動して、formDataをStateとして渡す
@@ -77,7 +77,7 @@ export const Form = () => {
           <textarea
             id="message"
             name="message"
-            rows="5"
+            rows={5}
             value={formData.message}
             onChange={handleChange}
           ></textarea>
